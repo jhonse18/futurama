@@ -73,13 +73,16 @@ async function inputCharacters(nombreBusqueda){
     charactersEl.innerHTML = '';
       
     for(let character of characters){
+        if (nombreBusqueda === 'Lrrr') {
+            nombreBusqueda = '';
+        }
         if (character['name']['first'] == nombreBusqueda) {
             const card = document.createElement('div');
             card.classList.add('character-card');
 
             card.innerHTML = `
             <img class="img_futurama" src=${character['images']['main']}>
-            <h2> ${character['name']['first']} <h2>
+            <h2> ${nombreBusqueda} <h2>
             <p>Sexo: ${character.gender}<p>
             <p>Especie: ${character.species}<p>
             <div id=fav_div><p class="fav">Favorito<p></div>
@@ -95,6 +98,8 @@ async function inputCharacters(nombreBusqueda){
 
 boton.addEventListener('click', (e) => {
     let nombreBusqueda = nameFilterEl.value;
-    nombreBusqueda = capitalizeFirstLetter(nombreBusqueda)
-    inputCharacters(nombreBusqueda);
+    if (nombreBusqueda.length > 1) {
+        nombreBusqueda = capitalizeFirstLetter(nombreBusqueda)
+        inputCharacters(nombreBusqueda);
+    }
 })
