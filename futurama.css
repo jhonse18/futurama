@@ -1,0 +1,70 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-image: url(futurama.jpg);
+    background-size: 100%;
+    
+}
+
+
+.search-container {
+    margin-top: 20px;
+}
+
+input {
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 25px;
+    height: 25px;
+}
+
+button {
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+#resultContainer {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.container{
+    width: 80%;
+    display: flex;
+    justify-content: center;  
+    margin: 0 auto;
+
+    
+}
+
+#characters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.character-card{
+    width: 200px;
+    margin:10px ;
+    padding: 10px;
+    background-color: aquamarine;
+    border-radius: 8px;
+}
+.character-card img{
+    width: 100%;
+}
+#boton{
+    height: min-content;
+    font-size: 1rem;
+    padding: 2px 15px;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.5rem;
+    background-color: aquamarine;
+    border-radius: 25px;
+    padding: 2px 15px
+}
