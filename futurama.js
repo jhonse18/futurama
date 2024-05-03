@@ -22,9 +22,11 @@ async function displayCharacters (name){
         for(let character of characters){
             const card = document.createElement('div');
             card.classList.add('character-card');
-            let name = character['images']['name'];
+            let nameFind = character['images']['name'];
 
-            if (character['images']['main'] == 1){}
+            if (nameFind.length == 1){
+console.log(nameFind);
+}
 
             card.innerHTML = `
             <img src=${character['images']['main']}/>
