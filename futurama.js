@@ -2,73 +2,74 @@ const charactersEl = document.getElementById("characters");
 const nameFilterEl = document.getElementById("name-filter");
 const boton = document.getElementById('boton');
 
-async function getCharacters (name){
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+async function getCharacters(){
     let url = 'https://api.sampleapis.com/futurama/characters';
 
     const response = await fetch (url);
     const data = await response.json();
-
     return data;
-
 }
 
-async function displayCharacters (name){
-    const characters = await getCharacters(name);
-    let cantidad = name.length;
-  
-    if (cantidad < 1) {
-        charactersEl.innerHTML = '';
 
-        for(let character of characters){
+
+displayCharacters();
+async function displayCharacters (){
+    const characters = await getCharacters();
+  
+    for(let character of characters){
+        if (character['name']['first'] !== 'Zapp') {
             const card = document.createElement('div');
             card.classList.add('character-card');
-            let nameFind = character['images']['name'];
-
-            if (nameFind.length == 1){
-console.log(nameFind);
-}
 
             card.innerHTML = `
-            <img src=${character['images']['main']}/>
+            <img class="img_futurama" src=${character['images']['main']}>
             <h2> ${character['name']['first']} <h2>
             <p>Sexo: ${character.gender}<p>
             <p>Especie: ${character.species}<p>
+            <div id=fav_div><p class="fav">Favorito<p></div>
             `;
-            console.log(character['images']['main']);
+
             charactersEl.appendChild(card);
         }
-    } else {
-        let api = getCharacters(name);
-        setTimeout(() => {
-                    
-            if (name == api['name']['first']) {
-
-                charactersEl.innerHTML = '';
-        
-                for(let character of characters){
-                        const card = document.createElement('div');
-                        card.classList.add('character-card');
-                        card.innerHTML = `
-                        <img src=${character['images']['main']}/>
-                        <h2> ${character['name']['first']} <h2>
-                        <p>Sexo: ${character.gender}<p>
-                        <p>Especie: ${character.species}<p>
-                        `;
-                    
-                charactersEl.appendChild(card);
-                }
-            }
-        }, 1000);
-
     }
-
 }
 
-displayCharacters(name);
 
+
+
+
+async function inputCharacters(nombreBusqueda){
+    const characters = await getCharacters();
+    charactersEl.innerHTML = '';
+      
+    for(let character of characters){
+        if (character['name']['first'] == nombreBusqueda) {
+            const card = document.createElement('div');
+            card.classList.add('character-card');
+
+            card.innerHTML = `
+            <img class="img_futurama" src=${character['images']['main']}>
+            <h2> ${character['name']['first']} <h2>
+            <p>Sexo: ${character.gender}<p>
+            <p>Especie: ${character.species}<p>
+            <div id=fav_div><p class="fav">Favorito<p></div>
+            `;
+
+            charactersEl.appendChild(card);
+            nameFilterEl.value = '';
+        }
+    }
+}
+    
 
 
 boton.addEventListener('click', (e) => {
     let nombreBusqueda = nameFilterEl.value;
-    displayCharacters(nombreBusqueda);
+    nombreBusqueda = capitalizeFirstLetter(nombreBusqueda)
+    inputCharacters(nombreBusqueda);
 })
