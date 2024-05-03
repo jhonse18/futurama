@@ -2,6 +2,12 @@ const charactersEl = document.getElementById("characters");
 const nameFilterEl = document.getElementById("name-filter");
 const boton = document.getElementById('boton');
 const rotulo = document.getElementById('rotulo');
+let revisarLocal = localStorage.getItem('fav');
+let nameAll = '';
+
+if (revisarLocal == null || revisarLocal == undefined) {
+    localStorage.setItem('fav', '');
+}
 
 rotulo.addEventListener('click', (e) => {
     displayCharacters();
@@ -26,22 +32,37 @@ async function displayCharacters (){
     const characters = await getCharacters();
   
     for(let character of characters){
-        if (character['name']['first'] !== 'Zapp') {
+        let nameAPI = character['name']['first'];
+        let imgAPI = character['images']['main'];
+
+        if (nameAPI !== 'Zapp') {
+            if (nameAPI == '') {
+                nameAPI = 'Lrrr';
+            }
+
             const card = document.createElement('div');
             card.classList.add('character-card');
 
             card.innerHTML = `
-            <img class="img_futurama" src=${character['images']['main']}>
-            <h2> ${character['name']['first']} <h2>
+            <img class="img_futurama" src=${imgAPI}>
+            <h2> ${nameAPI} <h2>
             <p>Sexo: ${character.gender}<p>
             <p>Especie: ${character.species}<p>
-            <div id=fav_div><p class="fav">Favorito<p></div>
+            <div id=fav_div>
+                <p id="${nameAPI}" class="fav">Favorito<p>
+            </div>
             `;
+
+            nameAll += `${nameAPI},`;
 
             charactersEl.appendChild(card);
         }
     }
 }
+
+setTimeout(() => {
+    localStorage.setItem('nombres', nameAll);   
+}, 500);
 
 
 
