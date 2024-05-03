@@ -1,7 +1,11 @@
 const charactersEl = document.getElementById("characters");
 const nameFilterEl = document.getElementById("name-filter");
 const boton = document.getElementById('boton');
+const rotulo = document.getElementById('rotulo');
 
+rotulo.addEventListener('click', (e) => {
+    displayCharacters();
+})
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
