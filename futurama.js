@@ -85,7 +85,9 @@ async function inputCharacters(nombreBusqueda){
             <h2> ${nombreBusqueda} <h2>
             <p>Sexo: ${character.gender}<p>
             <p>Especie: ${character.species}<p>
-            <div id=fav_div><p class="fav">Favorito<p></div>
+            <div id=fav_div>
+                <p id="${nombreBusqueda}" class="fav">Favorito<p>
+            </div>
             `;
 
             charactersEl.appendChild(card);

@@ -36,7 +36,7 @@ input {
     font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: 2px;
-    padding: 2px 15px;
+    padding: 4px 15px;
     border-radius: 25px;
     background-color: black;
     color: white;
@@ -54,7 +54,7 @@ input {
     background-color: black;
     color: white;
     border-radius: 25px;
-    padding: 2px 25px;
+    padding: 4px 25px;
     margin-left: 50px;
     letter-spacing: 2px;
 }
