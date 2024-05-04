@@ -1,3 +1,4 @@
+let uni;
 const favoritos = localStorage.getItem('fav');
 
 let array_namesFav = favoritos.substring(0, favoritos.length - 1);
@@ -27,9 +28,6 @@ async function getCharacters(){
                     <h2> ${uni} <h2>
                     <p>Sexo: ${data[i]['gender']}<p>
                     <p>Especie: ${data[i]['species']}<p>
-                    <div id=fav_div>
-                        <p id="${uni}" class="fav">Favorito<p>
-                    </div>
                     `;
 
                     contenedor.appendChild(card);
@@ -40,3 +38,6 @@ async function getCharacters(){
     }, 500);
 
 }
+
+
+

@@ -1,8 +1,21 @@
+@font-face {
+    font-family: "futurama";
+    src:
+      local("fr-title.ttf"),
+      url("fr-title.ttf") format("opentype"),
+      url("fr-title.ttf") format("opentype"),
+      url("fr-title.ttf") format("woff");
+  }
+  
+
+
+
 body {
     background-image: url(futurama.jpg);
     background-size: 100%;
     background-size: cover;
     background-attachment: fixed;
+    font-family: futurama;
 }
 
 .container{
