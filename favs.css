@@ -51,3 +51,11 @@ h1 {
     display: flex;
     justify-content: center;
 }
+
+@media (max-width:1150px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+}

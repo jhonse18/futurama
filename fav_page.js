@@ -62,12 +62,12 @@ setTimeout(() => {
                 if (favLocal_includes) {
                     favLocal = favLocal.replace(`${favButton.id},`,'')
                     localStorage.setItem('fav', favLocal);
-                    alert('Se ha eliminado de favoritos');
+                    alert(`${array_namesAll[i]} se ha eliminado de favoritos`);
                     window.location.reload();
                 } else {
                     favLocal += favButton.id+',';
                     localStorage.setItem('fav', favLocal);
-                    alert('Se ha añadido a favoritos');
+                    alert(`${array_namesAll[i]} se ha añadido a favoritos`);
                     window.location.reload();
                 }
             })
