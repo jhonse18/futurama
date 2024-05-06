@@ -104,4 +104,5 @@ boton.addEventListener('click', (e) => {
         nombreBusqueda = capitalizeFirstLetter(nombreBusqueda)
         inputCharacters(nombreBusqueda);
     }
+    
 })
